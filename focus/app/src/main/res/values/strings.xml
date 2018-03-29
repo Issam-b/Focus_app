@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Focus</string>
+    <string name="request">request</string>
+    <string name="cancel">cancel</string>
+    <string name="permission_dialog_message">to get access to your usage data and info about recent opened apps hit request</string>
+    <string name="permission_dialog_title">Request Permission</string>
 </resources>
