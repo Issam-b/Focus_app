@@ -2,8 +2,10 @@ package com.derassom.three_pixels.focus;
 
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.AppOpsManager;
+import android.app.PendingIntent;
 import android.app.usage.UsageEvents;
 import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;
@@ -29,6 +31,7 @@ import java.util.TreeMap;
 import static android.app.AppOpsManager.MODE_ALLOWED;
 import static android.app.AppOpsManager.OPSTR_GET_USAGE_STATS;
 import static android.content.ContentValues.TAG;
+import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         //run intent service (not used for now)
         Intent i= new Intent(this,runningAppService.class);
         startService(i);
+
 
     }
 
@@ -88,23 +92,6 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
    // test button
     public void runningInfo(View view) {
-        //declare UsageStateManager to get the recent used apps
-        UsageStatsManager usageStates = (UsageStatsManager) this.getSystemService( Context.USAGE_STATS_SERVICE);
-        Calendar calendar = Calendar.getInstance();
-        long endTime = calendar.getTimeInMillis();
-        calendar.add(Calendar.DATE, -1);
-        long startTime = calendar.getTimeInMillis();
-
-        List<UsageStats> usageStatsList = usageStates.queryUsageStats(UsageStatsManager.INTERVAL_DAILY,startTime,endTime);
-        ArrayList<String> packageNames= new ArrayList<String>();
-        for (UsageStats u : usageStatsList){
-            if(u.getPackageName()!=null){
-                packageNames.add(u.getPackageName());
-            Log.d(TAG, "PakageName: " + u.getPackageName() +  "\t" + "ForegroundTime: "
-                    + u.getTotalTimeInForeground() + " milliseconds") ;}
-
-        }
-
 
     }
 }
