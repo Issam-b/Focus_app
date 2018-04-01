@@ -1,37 +1,22 @@
 package com.derassom.three_pixels.focus;
 
 import android.annotation.TargetApi;
-import android.app.ActivityManager;
-import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.AppOpsManager;
-import android.app.PendingIntent;
-import android.app.usage.UsageEvents;
-import android.app.usage.UsageStats;
-import android.app.usage.UsageStatsManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.os.Build;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.SortedMap;
-import java.util.TreeMap;
-
-import static android.app.AppOpsManager.MODE_ALLOWED;
-import static android.app.AppOpsManager.OPSTR_GET_USAGE_STATS;
-import static android.content.ContentValues.TAG;
-import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
+import com.derassom.three_pixels.focus.database.AppDatabase;
+import com.derassom.three_pixels.focus.utils.DatabaseInitializer;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
         //run intent service (not used for now)
         Intent i= new Intent(this,runningAppService.class);
         startService(i);
+
+        // AppDatabase db = AppDatabase.getAppDatabase(this);
+        // DatabaseInitializer.populateAsync(db);
+        // String currentDBPath = getDatabasePath("focus-database").getAbsolutePath();
+        // Log.d("dbDebug", currentDBPath);
 
 
     }

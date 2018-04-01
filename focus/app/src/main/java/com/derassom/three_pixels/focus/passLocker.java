@@ -9,9 +9,7 @@ public class passLocker extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent i= getIntent();
+        Intent i = getIntent();
         setContentView(R.layout.activity_pass_locker);
-
-
     }
 }
