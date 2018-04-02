@@ -15,8 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import com.derassom.three_pixels.focus.database.AppDatabase;
-import com.derassom.three_pixels.focus.utils.DatabaseInitializer;
+import com.derassom.three_pixels.focus.database.FocusDatabase;
+import com.derassom.three_pixels.focus.utils.DatabaseInit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
         Intent i= new Intent(this,runningAppService.class);
         startService(i);
 
-        // AppDatabase db = AppDatabase.getAppDatabase(this);
-        // DatabaseInitializer.populateAsync(db);
+        // FocusDatabase db = FocusDatabase.getAppDatabase(this);
+        // DatabaseInit.populateAsync(db);
         // String currentDBPath = getDatabasePath("focus-database").getAbsolutePath();
         // Log.d("dbDebug", currentDBPath);
 

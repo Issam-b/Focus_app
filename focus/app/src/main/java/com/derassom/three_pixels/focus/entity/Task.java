@@ -13,46 +13,58 @@ public class Task {
     @ColumnInfo(name = "task_name")
     private String taskName;
 
+    @ColumnInfo(name = "task_type")
+    private String taskType;
+
     @ColumnInfo(name = "task_complete")
     private Boolean taskComplete;
 
-    @ColumnInfo(name = "task_time")
-    private int taskTime;
+    @ColumnInfo(name = "task_start_time")
+    private int taskStartTime;
 
+    @ColumnInfo(name = "task_end_time")
+    private int taskEndTime;
 
     public int getTaskid() {
         return taskid;
     }
-
     public void setTaskid(int taskid) {
         this.taskid = taskid;
     }
 
-
     public String getTaskName() {
         return taskName;
     }
-
     public void setTaskName(String taskName) {
         this.taskName = taskName;
     }
 
+    public String getTaskType() {
+        return taskType;
+    }
+    public void setTaskType(String taskType) {
+        this.taskType = taskType;
+    }
 
     public Boolean getTaskComplete() {
         return taskComplete;
     }
-
     public void setTaskComplete(Boolean taskComplete) {
         this.taskComplete = taskComplete;
     }
 
-
-    public int getTaskTime() {
-        return taskTime;
+    public int getTaskStartTime() {
+        return taskStartTime;
+    }
+    public void setTaskStartTime(int taskStartTime) {
+        this.taskStartTime = taskStartTime;
     }
 
-    public void setTaskTime(int taskTime) {
-        this.taskTime = taskTime;
+    public int getTaskEndTime() {
+        return taskEndTime;
+    }
+    public void setTaskEndTime(int taskEndTime) {
+        this.taskEndTime = taskEndTime;
     }
 
 }
