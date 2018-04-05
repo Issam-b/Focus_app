@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
     defaultConfig {
         applicationId "com.derassom.three_pixels.focus"
         minSdkVersion 19
@@ -25,7 +25,8 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:26.1.0'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
@@ -45,7 +46,7 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
 
     // Paging
-    implementation "android.arch.paging:runtime:1.0.0-alpha7"
+    implementation "android.arch.paging:runtime:1.0.0-beta1"
 
     // Test helpers for LiveData
     testImplementation "android.arch.core:core-testing:1.1.1"
