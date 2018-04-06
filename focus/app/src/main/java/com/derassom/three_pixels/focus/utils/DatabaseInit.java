@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DatabaseInit {
 
-    private static final String TAG = DatabaseInit.class.getName();
+    private static final String TAG = "DatabaseInit";
 
     public static void populateAsync(@NonNull final FocusDatabase db) {
         PopulateDbAsync task = new PopulateDbAsync(db);
@@ -25,7 +25,7 @@ public class DatabaseInit {
         populateWithTestTask(db);
     }
 
-    private static App addApp(final FocusDatabase db, App app) {
+    public static App addApp(final FocusDatabase db, App app) {
         db.appDao().insertAll(app);
         return app;
     }
@@ -42,6 +42,24 @@ public class DatabaseInit {
         addApp(db, app);
 
         List<App> appList = db.appDao().getAll();
+
+        for(int i=0;i<appList.size();i++)
+        {
+            Log.d(TAG, String.valueOf(appList.get(i)));
+        }
+
+        Log.d(DatabaseInit.TAG, "Rows Count: " + appList.size());
+    }
+
+    public static void printApps(FocusDatabase db) {
+
+        List<App> appList = db.appDao().getAll();
+
+        for(int i=0;i<appList.size();i++)
+        {
+            Log.d(TAG, String.valueOf(appList.get(i)));
+        }
+
         Log.d(DatabaseInit.TAG, "Rows Count: " + appList.size());
     }
 
@@ -60,6 +78,12 @@ public class DatabaseInit {
         addTask(db, task);
 
         List<Task> taskList = db.taskDao().getAll();
+
+        for(int i=0;i<taskList.size();i++)
+        {
+            Log.d(TAG, String.valueOf(taskList.get(i)));
+        }
+
         Log.d(DatabaseInit.TAG, "Rows Count: " + taskList.size());
     }
 
@@ -79,4 +103,5 @@ public class DatabaseInit {
         }
 
     }
+
 }

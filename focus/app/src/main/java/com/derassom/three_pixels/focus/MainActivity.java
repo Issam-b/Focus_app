@@ -16,7 +16,10 @@ import android.util.Log;
 import android.view.View;
 
 import com.derassom.three_pixels.focus.database.FocusDatabase;
+import com.derassom.three_pixels.focus.entity.App;
 import com.derassom.three_pixels.focus.utils.DatabaseInit;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,10 +32,15 @@ public class MainActivity extends AppCompatActivity {
         Intent i= new Intent(this,runningAppService.class);
         startService(i);
 
-        // FocusDatabase db = FocusDatabase.getAppDatabase(this);
-        // DatabaseInit.populateAsync(db);
-        // String currentDBPath = getDatabasePath("focus-database").getAbsolutePath();
-        // Log.d("dbDebug", currentDBPath);
+         FocusDatabase db = FocusDatabase.getFocusDatabase(this);
+         App newApp= new App();
+         newApp.setPkgName("com.facebook.katana");
+         db.appDao().insertAll(newApp);
+         DatabaseInit.printApps(db);
+
+
+         String currentDBPath = getDatabasePath("focus-database").getAbsolutePath();
+         Log.d("dbDebug", currentDBPath);
 
 
     }

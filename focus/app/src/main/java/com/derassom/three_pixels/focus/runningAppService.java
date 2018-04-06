@@ -11,6 +11,9 @@ import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
 
+import com.derassom.three_pixels.focus.database.FocusDatabase;
+import com.derassom.three_pixels.focus.entity.App;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -87,6 +90,9 @@ public class runningAppService extends IntentService {
 
             }
         }
+
+        FocusDatabase db = FocusDatabase.getFocusDatabase(this);
+        List<App> appList = db.appDao().getAll();
         String facebook = "com.facebook.katana";
         if (recentPackage.equals(facebook)) {
             //TODO CREATE ACTIVITY THAT POPS UP WHEN WE OPEN FACEBOOK;

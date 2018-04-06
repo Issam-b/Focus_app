@@ -86,4 +86,27 @@ public class App {
     public void setNumAllowed(int numAllowed) {
         this.numAllowed = numAllowed;
     }
+
+    @Override
+    public String toString()
+    {
+        StringBuffer buffer= new StringBuffer();
+        buffer.append(this.appid);
+        buffer.append(" ");
+        buffer.append(this.appName);
+        buffer.append(" ");
+        buffer.append(this.pkgName);
+        buffer.append(" ");
+        buffer.append(this.appDuration);
+        buffer.append(" ");
+        buffer.append(this.appBonus);
+        buffer.append(" ");
+        buffer.append(this.numBlocks);
+        buffer.append(" ");
+        buffer.append(this.numOpen);
+        buffer.append(" ");
+        buffer.append(this.numAllowed);
+        buffer.append(" ");
+        return buffer.toString();
+    }
 }
