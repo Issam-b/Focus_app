@@ -6,20 +6,23 @@ import android.app.AppOpsManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.derassom.three_pixels.focus.Service.runningAppService;
+import com.derassom.three_pixels.focus.Views.BlockAppsList;
+import com.derassom.three_pixels.focus.Views.onboardingLayout;
 import com.derassom.three_pixels.focus.database.FocusDatabase;
 import com.derassom.three_pixels.focus.entity.App;
 import com.derassom.three_pixels.focus.utils.DatabaseInit;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,19 +31,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        SharedPreferences sharedPreferences =
+                PreferenceManager.getDefaultSharedPreferences(this);
+        // Check if we need to display our Onboardinglayout
+        if (!sharedPreferences.getBoolean("firstTime", false)) {
+            // The user hasn't seen the onboardingLayout yet, so show it
+            startActivity(new Intent(this, onboardingLayout.class));
+        }
+
+
         //run intent service (not used for now)
         Intent i= new Intent(this,runningAppService.class);
         startService(i);
-
-         FocusDatabase db = FocusDatabase.getFocusDatabase(this);
-         App newApp= new App();
-         newApp.setPkgName("com.facebook.katana");
-         db.appDao().insertAll(newApp);
-         DatabaseInit.printApps(db);
-
-
-         String currentDBPath = getDatabasePath("focus-database").getAbsolutePath();
-         Log.d("dbDebug", currentDBPath);
 
 
     }
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             dialog.show();
             }
 
-    }
+         }
     //check for permission of enabled usage data
     private boolean checkForPermission(Context context) {
         boolean granted = false;
@@ -88,8 +90,10 @@ public class MainActivity extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-   // test button
-    public void runningInfo(View view) {
+
+    public void blockApps(View view) {
+
+        startActivity(new Intent(this, BlockAppsList.class));
 
     }
 }

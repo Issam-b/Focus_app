@@ -12,14 +12,23 @@ import java.util.List;
 @Dao
 public interface AppDao {
 
+    @Query("SELECT pkg_name FROM app")
+    List<String> getPackageName();
+
     @Query("SELECT * FROM app")
     List<App> getAll();
 
-    @Query("SELECT COUNT(*) from app")
+    @Query("SELECT * FROM app  WHERE app_name LIKE:name")
+
+    App getApp(String name);
+
+    @Query("SELECT COUNT(*) from app ")
     int countApps();
 
     @Insert
     void insertAll(App... apps);
+    @Insert
+    void insert(App app);
 
     @Delete
     void delete(App app);

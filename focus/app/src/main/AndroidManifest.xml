@@ -23,10 +23,12 @@
         </activity>
 
         <service
-            android:name=".runningAppService"
+            android:name=".Service.runningAppService"
             android:exported="false" />
 
-        <activity android:name=".passLocker"></activity>
+        <activity android:name=".Views.passLocker" />
+        <activity android:name=".Views.onboardingLayout" />
+        <activity android:name=".Views.BlockAppsList"></activity>
     </application>
 
 </manifest>
