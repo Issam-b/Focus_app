@@ -30,17 +30,25 @@ public class DatabaseInit {
         return app;
     }
 
-    private static void populateWithTestApp(FocusDatabase db) {
-        App app = new App();
-        app.setAppName("Facebook");
-        app.setPkgName("FB-Pkg");
-        app.setAppDuration(10);
-        app.setNumBlocks(3);
-        app.setNumAllowed(1);
-        app.setAppBonus(3);
-        app.setNumOpen(5);
-        addApp(db, app);
-
+    public static void populateWithTestApp(FocusDatabase db) {
+        App facebook =new App();
+        facebook.setPkgName("com.facebook.katana");
+        facebook.setAppName("Facebook");
+        facebook.setTimeAllowed(7200000);// 2 Hours
+        facebook.setEnabled(false);
+        addApp(db,facebook);
+        App instagram =new App();
+        instagram.setPkgName("com.instagram.android");
+        instagram.setAppName("Instagram");
+        instagram.setTimeAllowed(7200000);// 2 Hours
+        instagram.setEnabled(false);
+        addApp(db,instagram);
+        App messenger =new App();
+        messenger.setPkgName("com.facebook.orca");
+        messenger.setAppName("Messenger");
+        messenger.setEnabled(false);
+        messenger.setTimeAllowed(7200000);// 2 Hours
+        addApp(db,messenger);
         List<App> appList = db.appDao().getAll();
 
         for(int i=0;i<appList.size();i++)
@@ -63,19 +71,38 @@ public class DatabaseInit {
         Log.d(DatabaseInit.TAG, "Rows Count: " + appList.size());
     }
 
+    public static void printTasks(FocusDatabase db) {
+
+        List<Task> appList = db.taskDao().getAll();
+
+        for(int i=0;i<appList.size();i++)
+        {
+            Log.d(TAG, appList.get(i).toString());
+        }
+
+        Log.d(DatabaseInit.TAG, "Rows Count: " + appList.size());
+    }
+
     private static Task addTask(final FocusDatabase db, Task task) {
         db.taskDao().insertAll(task);
         return task;
     }
 
-    private static void populateWithTestTask(FocusDatabase db) {
-        Task task = new Task();
-        task.setTaskName("Running");
-        task.setTaskComplete(false);
-        task.setTaskStartTime(15);
-        task.setTaskEndTime(20);
-        task.setTaskType("user");
-        addTask(db, task);
+    public static void populateWithTestTask(FocusDatabase db) {
+
+        Task task1=new Task();
+        task1.setTaskName("Practise Sport for 1 hour");
+
+        addTask(db, task1);
+        Task task2=new Task();
+        task2.setTaskName("Stay away from Phone for 2 hours");
+        addTask(db, task2);
+        Task task3=new Task();
+        task3.setTaskName("Read a book");
+        addTask(db, task3);
+        Task task4=new Task();
+        task4.setTaskName("Go outside with your Friends");
+        addTask(db, task4);
 
         List<Task> taskList = db.taskDao().getAll();
 

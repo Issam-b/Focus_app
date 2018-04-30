@@ -13,17 +13,18 @@ public class Task {
     @ColumnInfo(name = "task_name")
     private String taskName;
 
-    @ColumnInfo(name = "task_type")
-    private String taskType;
+    @ColumnInfo(name = "task_selected")
+    private boolean selectedTask;
 
     @ColumnInfo(name = "task_complete")
-    private Boolean taskComplete;
+    private boolean taskComplete;
 
     @ColumnInfo(name = "task_start_time")
     private int taskStartTime;
 
     @ColumnInfo(name = "task_end_time")
     private int taskEndTime;
+
 
     public int getTaskid() {
         return taskid;
@@ -39,17 +40,17 @@ public class Task {
         this.taskName = taskName;
     }
 
-    public String getTaskType() {
-        return taskType;
+    public boolean getSelectedTask() {
+        return selectedTask;
     }
-    public void setTaskType(String taskType) {
-        this.taskType = taskType;
+    public void setSelectedTask(boolean selectedTask) {
+        this.selectedTask = selectedTask;
     }
 
     public Boolean getTaskComplete() {
         return taskComplete;
     }
-    public void setTaskComplete(Boolean taskComplete) {
+    public void setTaskComplete(boolean taskComplete) {
         this.taskComplete = taskComplete;
     }
 
@@ -66,5 +67,18 @@ public class Task {
     public void setTaskEndTime(int taskEndTime) {
         this.taskEndTime = taskEndTime;
     }
-
+    @Override
+    public String toString()
+    {
+        StringBuffer buffer= new StringBuffer();
+        buffer.append(this.taskid);
+        buffer.append(" ");
+        buffer.append(this.taskName);
+        buffer.append(" ");
+        buffer.append(this.taskComplete);
+        buffer.append(" ");
+        buffer.append(this.selectedTask);
+        buffer.append(" ");
+        return buffer.toString();
+    }
 }

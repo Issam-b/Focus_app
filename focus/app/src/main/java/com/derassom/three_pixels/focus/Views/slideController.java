@@ -21,13 +21,18 @@ public class slideController extends PagerAdapter {
         this.context=context;
     }
     public int[] slideImages={
-            R.drawable.ic_launcher_background,
-            R.drawable.ic_launcher_background,
+            R.drawable.start_logo,
+            R.drawable.logo_blogapps,
+            R.drawable.ic_launcher_background
+    };
+    public int[] discreptionImages={
+            R.drawable.functions,
+            R.drawable.list,
             R.drawable.ic_launcher_background
     };
     public String[]slideHeadings={
-            "Focus",
-            "Objective",
+            "Get Started",
+            "",
             "GetStarted"
     };
     public String[]slideContent={
@@ -52,10 +57,13 @@ public class slideController extends PagerAdapter {
         View view=layoutInflater.inflate(R.layout.slide_layout,container,false);
         ImageView image= (ImageView)view.findViewById(R.id.image);
         TextView heading=(TextView)view.findViewById(R.id.heading);
-        TextView content=(TextView)view.findViewById(R.id.content);
+       // TextView content=(TextView)view.findViewById(R.id.content);
+        ImageView discreption=(ImageView)view.findViewById(R.id.discreption);
+
         image.setImageResource(slideImages[position]);
+        discreption.setImageResource(discreptionImages[position]);
         heading.setText(slideHeadings[position]);
-        content.setText(slideContent[position]);
+      //  content.setText(slideContent[position]);
         container.addView(view);
 
         return view;

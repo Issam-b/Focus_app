@@ -17,7 +17,7 @@ public class App {
     private String pkgName;
 
     @ColumnInfo(name = "app_duration")
-    private int appDuration;
+    private long appDuration;
 
     @ColumnInfo(name = "app_bonus")
     private int appBonus;
@@ -29,7 +29,10 @@ public class App {
     private int numOpen;
 
     @ColumnInfo(name = "num_allowed")
-    private int numAllowed;
+    private long timeAllowed;
+    @ColumnInfo(name = "app_enabled")
+    private boolean enabled;
+
 
     public int getAppid() {
         return appid;
@@ -52,10 +55,10 @@ public class App {
         this.pkgName = pkgName;
     }
 
-    public int getAppDuration() {
+    public long getAppDuration() {
         return appDuration;
     }
-    public void setAppDuration(int appDuration) {
+    public void setAppDuration(long appDuration) {
         this.appDuration = appDuration;
     }
 
@@ -80,11 +83,18 @@ public class App {
         this.numOpen = numOpen;
     }
 
-    public int getNumAllowed() {
-        return numAllowed;
+    public long getTimeAllowed() {
+        return timeAllowed;
     }
-    public void setNumAllowed(int numAllowed) {
-        this.numAllowed = numAllowed;
+    public void setTimeAllowed(long timeAllowed) {
+        this.timeAllowed = timeAllowed;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     @Override
@@ -105,7 +115,9 @@ public class App {
         buffer.append(" ");
         buffer.append(this.numOpen);
         buffer.append(" ");
-        buffer.append(this.numAllowed);
+        buffer.append(this.timeAllowed);
+        buffer.append(" ");
+        buffer.append(this.enabled);
         buffer.append(" ");
         return buffer.toString();
     }

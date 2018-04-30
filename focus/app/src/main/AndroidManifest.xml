@@ -8,27 +8,46 @@
         tools:ignore="ProtectedPermissions" />
 
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:allowBackup="false"
+        android:icon="@mipmap/focus"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.derassom.three_pixels.focus.MainActivity" />
         </activity>
 
         <service
             android:name=".Service.runningAppService"
             android:exported="false" />
 
-        <activity android:name=".Views.passLocker" />
-        <activity android:name=".Views.onboardingLayout" />
-        <activity android:name=".Views.BlockAppsList"></activity>
+        <activity
+            android:name=".Views.passLocker"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".Views.onboardingLayout"
+            tools:ignore="InnerclassSeparator" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".Settings"></activity>
+
     </application>
 
 </manifest>

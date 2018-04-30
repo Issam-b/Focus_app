@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.derassom.three_pixels.focus.MainActivity;
 import com.derassom.three_pixels.focus.R;
+import com.derassom.three_pixels.focus.database.FocusDatabase;
+import com.derassom.three_pixels.focus.utils.DatabaseInit;
 
 // Created by Lokmane Krizou on 4/6/2018.
 public class onboardingLayout extends AppCompatActivity {
@@ -25,6 +27,7 @@ public class onboardingLayout extends AppCompatActivity {
     private Button nextBtn;
     private Button prvBtn;
     private int currentPage;
+    FocusDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +50,9 @@ public class onboardingLayout extends AppCompatActivity {
                 else {
                     SharedPreferences.Editor sharedPreferencesEditor =
                             PreferenceManager.getDefaultSharedPreferences(onboardingLayout.this).edit();
-                    sharedPreferencesEditor.putBoolean("firstTime", true);
+                    sharedPreferencesEditor.putBoolean("openedFirstTime", true);
                     sharedPreferencesEditor.apply();
-                    startActivity(new Intent(onboardingLayout.this, BlockAppsList.class));
+                    startActivity(new Intent(onboardingLayout.this, MainActivity.class));
                 }
             }
         });
@@ -59,6 +62,9 @@ public class onboardingLayout extends AppCompatActivity {
                 viewPager.setCurrentItem(currentPage-1);
             }
         });
+        db=FocusDatabase.getFocusDatabase(this);
+        DatabaseInit.populateWithTestTask(db);
+        DatabaseInit.populateWithTestApp(db);
     }
     public void addDots(int position){
         mDots=new TextView[mSlideController.slideHeadings.length];
@@ -67,11 +73,11 @@ public class onboardingLayout extends AppCompatActivity {
             mDots[i]=new TextView(this);
             mDots[i].setText(Html.fromHtml("&#8226;"));
             mDots[i].setTextSize(35);
-            mDots[i].setTextColor(getResources().getColor(R.color.colorPrimary));
+            mDots[i].setTextColor(getResources().getColor(R.color.white));
             dotLayout.addView(mDots[i]);
         }
         if(mDots.length>0){
-            mDots[position].setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+            mDots[position].setTextColor(getResources().getColor(R.color.colorPrimary));
         }
     }
     ViewPager.OnPageChangeListener viewListener =new ViewPager.OnPageChangeListener() {
