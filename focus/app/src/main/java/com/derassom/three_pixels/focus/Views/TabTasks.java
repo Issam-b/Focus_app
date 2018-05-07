@@ -1,14 +1,22 @@
 package com.derassom.three_pixels.focus.Views;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.derassom.three_pixels.focus.R;
@@ -50,6 +58,21 @@ public class TabTasks  extends Fragment {
         List<Task> taskList = db.taskDao().getSelectedTasks(true);
         mHandler=new Handler();
         taskModleList = new ArrayList<>();
+        if(taskList.size()==0){
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage("No Task have been selected, Go to Settings to add your tasks")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            startActivity(new Intent(getActivity(), com.derassom.three_pixels.focus.Settings.class));
+                        }
+                    })
+                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                                dialog.dismiss();
+                            }
+                    });
+                builder.show();
+        }
         for(Task task: taskList) {
             Log.d("AddTask",task.getTaskName());
             taskModleList.add(new TaskListModle(task.getTaskComplete(), task.getTaskName(),"Task"+task.getTaskid()));

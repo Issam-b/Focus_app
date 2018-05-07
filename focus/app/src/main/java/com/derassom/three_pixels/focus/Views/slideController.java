@@ -23,23 +23,19 @@ public class slideController extends PagerAdapter {
     public int[] slideImages={
             R.drawable.start_logo,
             R.drawable.logo_blogapps,
-            R.drawable.ic_launcher_background
+            R.drawable.tasklogo
     };
     public int[] discreptionImages={
             R.drawable.functions,
             R.drawable.list,
-            R.drawable.ic_launcher_background
+            R.drawable.taskbackground
     };
     public String[]slideHeadings={
-            "Get Started",
+            "Welcome",
             "",
-            "GetStarted"
+            "Get Started"
     };
-    public String[]slideContent={
-            "description of the app",
-            "our objectvie is blalbalbla",
-            "click start to start the app"
-    };
+
 
     @Override
     public int getCount() {

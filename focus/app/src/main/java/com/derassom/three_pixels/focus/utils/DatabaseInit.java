@@ -98,7 +98,7 @@ public class DatabaseInit {
         task2.setTaskName("Stay away from Phone for 2 hours");
         addTask(db, task2);
         Task task3=new Task();
-        task3.setTaskName("Read a book");
+        task3.setTaskName("Read 10 pages from a book");
         addTask(db, task3);
         Task task4=new Task();
         task4.setTaskName("Go outside with your Friends");

@@ -95,19 +95,31 @@
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="300dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
                                 android:baselineAligned="false"
                                 android:orientation="vertical">
 
-                                <ListView
-                                    android:id="@+id/listview"
+                                <ScrollView
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/customborder">
+                                    android:layout_height="match_parent">
 
-                                </ListView>
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <ListView
+                                            android:id="@+id/listview"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="300dp"
+                                            android:background="@drawable/customborder">
+
+                                        </ListView>
+                                    </LinearLayout>
+                                </ScrollView>
+
                             </LinearLayout>
 
                             <LinearLayout
@@ -125,7 +137,8 @@
                                     android:layout_height="wrap_content"
                                     android:ems="10"
                                     android:hint="Add new Task"
-                                    android:inputType="textPersonName" />
+                                    android:inputType="textPersonName"
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -143,7 +156,6 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@drawable/addbutton"
-                                    android:fontFamily="@font/roboto_thin"
                                     android:onClick="addTask"
                                     android:text="Add Task"
                                     android:textColor="@color/white"
@@ -184,7 +196,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
-                                android:text="Application Information"
+                                android:text="Blocked Hours"
                                 android:textAlignment="viewStart"
                                 android:textColor="@color/colorPrimaryDark"
                                 android:textSize="18sp"
@@ -198,6 +210,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginTop="5dp"
                             android:layout_weight="1"
+                            android:background="@drawable/border"
                             android:baselineAligned="false"
                             android:gravity="top|center"
                             android:orientation="vertical">
@@ -206,6 +219,7 @@
                                 android:id="@+id/textView3"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
                                 android:fontFamily="@font/roboto_thin"
                                 android:text="Use Social Media Apps for:"
                                 android:textColor="@color/colorPrimaryDark"
@@ -225,7 +239,7 @@
                                 android:id="@+id/timePicker"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
+                                android:layout_weight="4"
                                 android:headerBackground="@color/colorPrimary"
                                 android:numbersInnerTextColor="@color/colorPrimary"
                                 android:timePickerMode="spinner"
@@ -236,6 +250,7 @@
                                 android:id="@+id/textView4"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="20dp"
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="Hours"
@@ -259,10 +274,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/addbutton"
-                                android:fontFamily="@font/roboto_thin"
+                                android:onClick="submit"
                                 android:text="Submit"
                                 android:textColor="@color/white"
-                                android:onClick="submit"
                                 tools:ignore="NewApi" />
                         </LinearLayout>
 
