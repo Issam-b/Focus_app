@@ -130,9 +130,12 @@ else {
         }
 
     }
-    protected void onResume() {
+    @Override
+    protected void onStart() {
 
-        super.onResume();
+
+        super.onStart();
+
         if (!checkForPermission(this)){
             // Create alertDialog
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -152,6 +155,12 @@ else {
             AlertDialog dialog = builder.create();
             dialog.show();
         }
+
+    }
+    protected void onResume() {
+
+        super.onResume();
+
 
         startRepeatingTask();
     }

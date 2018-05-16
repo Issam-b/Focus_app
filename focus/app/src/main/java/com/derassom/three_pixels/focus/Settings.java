@@ -53,6 +53,7 @@ public class Settings extends AppCompatActivity {
     }
 
     Runnable setTasks=new Runnable() {
+        @RequiresApi(api = Build.VERSION_CODES.M)
         @Override
         public void run() {
                 showTasks();
@@ -61,7 +62,15 @@ public class Settings extends AppCompatActivity {
         }
     };
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public void showTasks(){
+
+        List<Long> currentTime=db.appDao().getTimeAllowed();
+        int currentHour= (int) (currentTime.get(1)/(1000*60*60));
+        int currentMin= (int) (currentTime.get(1)/(1000*60))-currentHour*60;
+
+        timePicker.setHour( currentHour );
+        timePicker.setMinute(currentMin);
         taskList=setList();
         adapter = new CustomAdapter(this, taskList);
         listView.setAdapter(adapter);
@@ -145,6 +154,8 @@ public class Settings extends AppCompatActivity {
             db.appDao().update(app);
         }
         DatabaseInit.printApps(db);
+        Toast.makeText(this, "Block Time added Successfully", Toast.LENGTH_SHORT).show();
+
 
     }
 

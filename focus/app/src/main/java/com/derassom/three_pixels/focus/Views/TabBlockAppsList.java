@@ -82,6 +82,7 @@ public class TabBlockAppsList extends Fragment {
         checkBoxClick(instegramBox,db.appDao().getApp("Instagram"));
         checkBoxClick(messengerBox,db.appDao().getApp("Messenger"));
     DatabaseInit.printApps(db);
+        Toast.makeText(getActivity(), "Submitted", Toast.LENGTH_SHORT).show();
     }
 
 }

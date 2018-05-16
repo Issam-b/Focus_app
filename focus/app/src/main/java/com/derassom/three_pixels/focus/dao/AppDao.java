@@ -15,6 +15,8 @@ public interface AppDao {
 
     @Query("SELECT pkg_name FROM app")
     List<String> getPackageName();
+    @Query("SELECT time_allowed FROM app")
+    List<Long> getTimeAllowed();
 
     @Query("SELECT app_duration FROM app")
     List<Long> getAppsDuration();

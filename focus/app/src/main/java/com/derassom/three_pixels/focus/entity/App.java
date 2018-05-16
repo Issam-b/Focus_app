@@ -28,7 +28,7 @@ public class App {
     @ColumnInfo(name = "num_open")
     private int numOpen;
 
-    @ColumnInfo(name = "num_allowed")
+    @ColumnInfo(name = "time_allowed")
     private long timeAllowed;
     @ColumnInfo(name = "app_enabled")
     private boolean enabled;

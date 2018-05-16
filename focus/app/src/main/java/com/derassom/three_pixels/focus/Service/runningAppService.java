@@ -37,7 +37,7 @@ import static java.util.Calendar.getInstance;
 public class runningAppService extends IntentService {
 
     Context context;
-    private int SERVICE_INTERVAL =2000; // check the running application each 10ms.
+    private int SERVICE_INTERVAL =2000; // check the running application each 10millisecond.
     private Handler mhandler;
     Date currentDate= new Date();
     public runningAppService() {
